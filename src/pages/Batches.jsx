@@ -47,30 +47,39 @@ const Batches = () => {
       headerName: "Schedule Time",
       flex: 0.1,
       minWidth: 200,
-      valueFormatter: (params) =>
-        `${new Date(params.value).toLocaleDateString()} ${new Date(
-          params.value
-        ).toLocaleTimeString()}`,
+      valueFormatter: (params) => {
+        return params.value
+          ? `${new Date(params.value).toLocaleDateString()} ${new Date(
+              params.value
+            ).toLocaleTimeString()}`
+          : "-";
+      },
     },
     {
       field: "compeleteDate",
       headerName: "Complete Time",
       flex: 0.1,
       minWidth: 200,
-      valueFormatter: (params) =>
-        `${new Date(params.value).toLocaleDateString()} ${new Date(
-          params.value
-        ).toLocaleTimeString()}`,
+      valueFormatter: (params) => {
+        return params.value
+          ? `${new Date(params.value).toLocaleDateString()} ${new Date(
+              params.value
+            ).toLocaleTimeString()}`
+          : "-";
+      },
     },
     {
-      field: "created_at",
+      field: "createdAt",
       headerName: "Created At",
       flex: 0.1,
       minWidth: 200,
-      valueFormatter: (params) =>
-        `${new Date(params.value).toLocaleDateString()} ${new Date(
-          params.value
-        ).toLocaleTimeString()}`,
+      valueFormatter: (params) => {
+        return params.value
+          ? `${new Date(params.value).toLocaleDateString()} ${new Date(
+              params.value
+            ).toLocaleTimeString()}`
+          : "-";
+      },
     },
     {
       field: "actions",

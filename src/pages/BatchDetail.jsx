@@ -27,7 +27,7 @@ const BatchDetail = () => {
     },
     {
       field: "isSent",
-      headerName: "Success",
+      headerName: "Is Sent",
       flex: 0.1,
       minWidth: 90,
     },
@@ -36,10 +36,13 @@ const BatchDetail = () => {
       headerName: "Sent Time",
       flex: 0.1,
       minWidth: 200,
-      valueFormatter: (params) =>
-        `${new Date(params.value).toLocaleDateString()} ${new Date(
-          params.value
-        ).toLocaleTimeString()}`,
+      valueFormatter: (params) => {
+        return params.value
+          ? `${new Date(params.value).toLocaleDateString()} ${new Date(
+              params.value
+            ).toLocaleTimeString()}`
+          : "-";
+      },
     },
   ];
 

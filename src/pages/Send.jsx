@@ -94,6 +94,8 @@ const Send = () => {
     }
   };
 
+  console.log(schedule);
+
   return (
     <>
       <h3>Send</h3>
