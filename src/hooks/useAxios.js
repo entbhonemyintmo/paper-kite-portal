@@ -26,7 +26,7 @@ const useAxios = (props) => {
 
     if (!isExpired) return req;
 
-    const res = await axios.post(
+    const res = await axios.get(
       `${baseURL}/auth/refresh`,
       {},
 
