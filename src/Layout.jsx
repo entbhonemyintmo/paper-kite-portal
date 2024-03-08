@@ -14,6 +14,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import ChecklistIcon from "@mui/icons-material/Checklist";
 import SendIcon from "@mui/icons-material/Send";
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
 
 const drawerWidth = 300;
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -68,6 +69,11 @@ const Layout = () => {
                 icon: <ChecklistIcon />,
                 route: "batches",
                 label: "Batches",
+              },
+              {
+                icon: <VpnKeyIcon />,
+                route: "api-keys",
+                label: "Api Keys",
               },
               {
                 icon: <ManageSearchIcon />,

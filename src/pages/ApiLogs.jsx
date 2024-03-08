@@ -13,8 +13,6 @@ const ApiLogs = () => {
     return res.data;
   });
 
-  console.log(data);
-
   const apiLogColumn = [
     { field: "_id", headerName: "ID", hide: true, minWidth: 90 },
     { field: "message", headerName: "Message", minWidth: 200 },

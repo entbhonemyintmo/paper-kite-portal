@@ -12,6 +12,7 @@ import Batches from "../pages/Batches";
 import ApiLogs from "../pages/ApiLogs";
 import Send from "../pages/Send";
 import BatchDetail from "../pages/BatchDetail";
+import ApiKeys from "../pages/ApiKeys";
 
 const Router = () => {
   const router = createBrowserRouter(
@@ -22,6 +23,7 @@ const Router = () => {
           <Route path="send" element={<Send />} />
           <Route path="batches" element={<Batches />} />
           <Route path="detail" element={<BatchDetail />} />
+          <Route path="api-keys" element={<ApiKeys />} />
           <Route path="api-logs" element={<ApiLogs />} />
         </Route>
         <Route path="*" element={<Navigate to="send" replace />} />

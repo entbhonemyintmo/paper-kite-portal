@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import ChecklistIcon from "@mui/icons-material/Checklist";
 import SendIcon from "@mui/icons-material/Send";
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
 
 const Sidelist = ({ toggleDrawer }) => {
   const navigate = useNavigate();
@@ -44,6 +45,15 @@ const Sidelist = ({ toggleDrawer }) => {
         </ListItemIcon>
         <ListItemText
           primary="Batches"
+          primaryTypographyProps={{ fontWeight: 700 }}
+        />
+      </ListItemButton>
+      <ListItemButton onClick={routing("api-keys")}>
+        <ListItemIcon>
+          <VpnKeyIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary="Api Keys"
           primaryTypographyProps={{ fontWeight: 700 }}
         />
       </ListItemButton>
