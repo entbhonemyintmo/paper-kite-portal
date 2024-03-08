@@ -63,12 +63,14 @@ export const batchesColumn = [
     headerName: "Actions",
     width: 350,
     flex: 0.1,
-    renderCell: ({ _id }) => (
-      <Link to={_id + ""}>
-        <Button size="small" variant="outlined">
-          View
-        </Button>
-      </Link>
+    renderCell: (params) => (
+      <Button
+        size="small"
+        variant="outlined"
+        onClick={() => console.log(params)}
+      >
+        Details
+      </Button>
     ),
   },
 ];
