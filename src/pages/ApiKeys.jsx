@@ -5,9 +5,13 @@ import NoRowOverlay from "../components/common/NoRowOverlay";
 import { useQuery } from "react-query";
 import useAxios from "../hooks/useAxios";
 import KeyGenerateDialog from "../components/common/KeyGenerateDialog";
+import copy from "copy-to-clipboard";
+import { withAlert } from "../recoil/snackbar";
+import { useSetRecoilState } from "recoil";
 
 const ApiKeys = () => {
   const api = useAxios();
+  const openAlert = useSetRecoilState(withAlert);
 
   const [open, setOpen] = useState(false);
 
@@ -22,13 +26,12 @@ const ApiKeys = () => {
     {
       field: "key",
       headerName: "Key",
-      flex: 0.1,
+      flex: 0.4,
       minWidth: 400,
     },
     {
       field: "isActive",
       headerName: "Is Active",
-      flex: 0.1,
       minWidth: 90,
     },
 
@@ -68,7 +71,8 @@ const ApiKeys = () => {
             size="small"
             variant="contained"
             onClick={() => {
-              console.log("smt");
+              copy(params.row.key);
+              openAlert({ status: 200, detail: "copied to clipboard" });
             }}
           >
             Copy Key
