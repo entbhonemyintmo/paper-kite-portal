@@ -6,6 +6,7 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
@@ -17,10 +18,11 @@ import { withAlert } from "../recoil/snackbar";
 import validatePhoneNumberFile from "../utils/validatePhoneNumberFile";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
+import exportFromJSON from "export-from-json";
 
 const Send = () => {
-  const api = useAxios({autoSnackbar: true});
-  const navigate = useNavigate()
+  const api = useAxios({ autoSnackbar: true });
+  const navigate = useNavigate();
 
   const openAlert = useSetRecoilState(withAlert);
 
@@ -46,7 +48,7 @@ const Send = () => {
           });
           setFile(null);
           setSchedule(new Date().toISOString());
-          navigate('/batches')
+          navigate("/batches");
         }
       },
     }
@@ -94,13 +96,18 @@ const Send = () => {
     }
   };
 
-  console.log(schedule);
-
   return (
     <>
       <h3>Send</h3>
 
-      <Box sx={{ flex: 1, position: "relative", height: "60vh" }}>
+      <Box
+        sx={{
+          flex: 1,
+          position: "relative",
+          height: "60vh",
+          maxWidth: { lg: "30%" },
+        }}
+      >
         <Typography
           variant="subtitle2"
           fontWeight="bold"
@@ -118,10 +125,7 @@ const Send = () => {
           onChange={handleChange}
           size="small"
           sx={{
-            width: {
-              sm: "30%",
-              xs: "100%",
-            },
+            width: "100%",
             border: "none",
             borderRadius: 1,
             "& .MuiInputBase-root": {
@@ -144,7 +148,34 @@ const Send = () => {
             color: "secondary.light",
           }}
         >
-          Upload CSV
+          Upload CSV &nbsp;
+          <span
+            style={{
+              textDecoration: "underline",
+              cursor: "pointer",
+              color: "blue",
+            }}
+            onClick={() =>
+              exportFromJSON({
+                data: [
+                  {
+                    phone_numbers: "959760614656",
+                    message: "something to send!",
+                  },
+                  { phone_numbers: "959248675432", message: "hi there!" },
+                  {
+                    phone_numbers: "95995024278",
+                    message: "a quick brown fox jumps over the lazy dog!",
+                  },
+                  { phone_numbers: "959266550050", message: "hire me!" },
+                ],
+                fileName: "paper-kite-template",
+                exportType: exportFromJSON.types.csv,
+              })
+            }
+          >
+            Download Template
+          </span>
         </Typography>
 
         <DragAndDropUpload data={file} setData={setFile} />
@@ -162,7 +193,11 @@ const Send = () => {
         </Typography>
 
         <Box
-          sx={{ display: "flex", flexDirection: { xs: "column", md: "row" } }}
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            mb: "3rem",
+          }}
         >
           <RadioGroup row name="type" value={data.type} onChange={handleChange}>
             <FormControlLabel value="NOW" control={<Radio />} label="Now" />
@@ -202,15 +237,7 @@ const Send = () => {
             />
           )}
         </Box>
-        <Box
-          sx={{
-            mt: "1rem",
-            width: {
-              sm: "30%",
-              xs: "100%",
-            },
-          }}
-        >
+        <Stack direction="row" justifyContent={{ xs: "center", lg: "start" }}>
           <LoadingButton
             onClick={handleSubmit}
             variant="contained"
@@ -222,7 +249,7 @@ const Send = () => {
               mr: "1rem",
             }}
           >
-            Create Batch
+            Send
           </LoadingButton>
           <Button
             variant="outlined"
@@ -239,7 +266,7 @@ const Send = () => {
           >
             Cancel
           </Button>
-        </Box>
+        </Stack>
       </Box>
     </>
   );

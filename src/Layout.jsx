@@ -119,7 +119,7 @@ const Layout = () => {
         <Main
           sx={{
             borderRadius: "0.8rem",
-            boxShadow: "1px 1px 20px rgba(51, 51, 51, 0.08)",
+            boxShadow: "1px 1px 20px rgba(51, 51, 51, 0.2)",
             overflow: "auto",
             px: { xs: "1rem", md: "2rem" },
             py: "1rem",
