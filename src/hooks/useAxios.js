@@ -26,10 +26,9 @@ const useAxios = (props) => {
 
     if (!isExpired) return req;
 
-    const res = await axios.get(
+    const res = await axios.post(
       `${baseURL}/auth/refresh`,
       {},
-
       {
         headers: {
           Authorization: `Bearer ${auth.refresh_token}`,
