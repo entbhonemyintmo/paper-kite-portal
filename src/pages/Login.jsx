@@ -105,6 +105,7 @@ const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            inputProps={{ 'data-testid': 'email-input' }}
           />
 
           <Typography
@@ -125,6 +126,7 @@ const Login = () => {
             type="password"
             autoComplete="password"
             autoFocus
+            inputProps={{ 'data-testid': 'password-input' }}
           />
 
           <LoadingButton
